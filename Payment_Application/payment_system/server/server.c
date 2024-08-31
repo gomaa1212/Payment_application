@@ -1,7 +1,7 @@
 #include "server.h"
 #include <stdio.h>
 #include <stdbool.h>
-#include "../../system/data_structure/ist/list.h"
+#include "../../system/data_structure/list/list.h"
 #include "../../system/data_bases/file_handling.h"
 #include "../../system/data_structure/queue/queu.h"
 
