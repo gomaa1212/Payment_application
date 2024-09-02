@@ -213,6 +213,7 @@ void handleMoneyTransfer(ST_transaction_t *transData, ST_accountsDB_t *accountRe
         if (isValidReceivingAccount == ACCOUNT_NOT_FOUND) {
             printf("The account does not exist.\n");
             transData->transState = FRAUD_CARD;
+            transData->terminalData.transAmount=0;
             invalidReceivingAccount = true;
         }
     }
