@@ -64,11 +64,11 @@ EN_serverError_t isBlockedAccount(ST_accountsDB_t *accountRefrence)
     {
         return ACCOUNT_NOT_FOUND;
     }
-    if(accountRefrence->state==0)
+    if(accountRefrence->state==BLOCKED)
     {
         return BLOCKED_ACCOUNT;
     }
-    if(accountRefrence->state==1)
+    if(accountRefrence->state==RUNNING)
     {
         return SERVER_OK;
     }
@@ -124,6 +124,24 @@ char *getTransactionStateTostring(EN_transState_t enumstate)
     if(enumstate==DECLINED_EXCEED_LIMIT)
         return "DECLINED_EXCEED_LIMIT";
     return "INTERNAL_SERVER_ERROR";
+}
+
+// Convert accounts state string to enum
+EN_accountState_t getAccountStateToenum(char *strstate)
+{
+    if(strcmp(strstate,"BLOCKED")==0)
+        return BLOCKED;
+    if(strcmp(strstate,"RUNNING")==0)
+        return RUNNING;
+}
+
+// Convert accounts state enum to string
+char *getAccountStateTostring(EN_accountState_t enumstate)
+{
+    if(enumstate==BLOCKED)
+        return "BLOCKED";
+    if(enumstate==RUNNING)
+        return "RUNNING";
 }
 
 // List saved transactions for a specific card

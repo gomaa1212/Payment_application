@@ -48,6 +48,8 @@ EN_serverError_t isAmountAvailable(ST_terminalData_t *termData,ST_accountsDB_t* 
 void listSavedTransactions(ST_transaction_t *transData);
 EN_transState_t getTransactionStateToenum(char *strstate);
 char *getTransactionStateTostring(EN_transState_t enumstate);
+EN_accountState_t getAccountStateToenum(char *strstate);
+char *getAccountStateTostring(EN_accountState_t enumstate);
 void handleMoneyTransfer(ST_transaction_t *transData, ST_accountsDB_t *accountReference);
 void handleMoneyDeposit(ST_transaction_t *transData, ST_accountsDB_t *accountReference);
 

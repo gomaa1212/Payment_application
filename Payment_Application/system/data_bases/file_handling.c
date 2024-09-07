@@ -16,8 +16,10 @@ void readAccountDataDB()
     }
     ST_accountsDB_t account;
     int i=0;
-    while(fscanf(myfile,"%f %d %s %s %s",&(account.balance),(int*)&(account.state),&(account.primaryAccountNumber),&(account.AccountName),&(account.AccountDate))==5)
+    char accountState[10];
+    while(fscanf(myfile,"%f %s %s %s %s",&(account.balance),accountState,&(account.primaryAccountNumber),&(account.AccountName),&(account.AccountDate))==5)
     {
+        account.state=getAccountStateToenum(accountState);
         insert_list(i++,account,&accounstList);
     }
     fclose(myfile);
@@ -34,7 +36,8 @@ int updateAccountBalane()
     listnode *p=accounstList.head;
     while(p)
     {
-        fprintf(myfile,"%.2f %d %s %s %s\n",p->entry.balance,p->entry.state,p->entry.primaryAccountNumber,p->entry.AccountName,p->entry.AccountDate);
+        char *accountState=getAccountStateTostring(p->entry.state);
+        fprintf(myfile,"%.2f %s %s %s %s\n",p->entry.balance,accountState,p->entry.primaryAccountNumber,p->entry.AccountName,p->entry.AccountDate);
         p=p->next;
     }
     fclose(myfile);
