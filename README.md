@@ -25,11 +25,24 @@ The **Payment Application** is a comprehensive system designed to manage financi
 ### 1. Transfer Money
 
 **Action:**
-- The application prompts the user to enter the recipient’s account number and the transaction amount.
+- The application first prompts the user to choose between two options:
+  - **1**: Transfer money to a bank account.
+  - **2**: Personal withdrawal.
 
-**Validation:**
-- The recipient’s account is validated to ensure it exists and is not blocked.
-- The application checks if there are sufficient funds available for the transfer.
+- **Transfer to a Bank Account:**
+  - The user is prompted to enter the recipient’s account number and the transaction amount.
+  - The recipient’s account is validated to ensure it exists and is not blocked.
+  - The application checks if there are sufficient funds available for the transfer.
+  - If all validations pass, the application updates the balances of both the sender and recipient accounts.
+  - The transaction details are saved in the transaction records.
+  - The user is notified if the transaction is approved or declined due to reasons such as insufficient funds, a blocked account, or exceeding limits.
+
+- **Personal Withdrawal:**
+  - The user is prompted to enter the amount they wish to withdraw.
+  - The application checks if the withdrawal amount does not exceed the maximum allowed limit.
+  - If valid, the amount is subtracted from the user's account balance, and the balance is updated accordingly.
+  - The transaction details are saved in the transaction records.
+  - The user is notified if the withdrawal was successful or if it exceeded the allowed limit.
 
 **Processing:**
 - If all validations pass, the application updates the balances of both the sender and recipient accounts.
